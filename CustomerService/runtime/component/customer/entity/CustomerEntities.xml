@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.1.xsd">
+
+    <entity entity-name="Customer" package="customer">
+        <field name="customerId" type="id" is-pk="true"/>
+        <field name="customerName" type="text-medium"/>
+        <field name="customerAge" type="text-medium"/>
+        <field name="customerSalary" type="text-medium"/>
+        <!--<relationship type="one" related="tutorial.Tutorial" short-alias="Tutorial">
+            <key-map field-name="customerName"/>
+        </relationship>-->
+    </entity>
+    <entity entity-name="CustomerAccountService" package="customer">
+        <field name="customerAccountId" type="id" is-pk="true"></field>
+        <field name="name" type="text-medium"/>
+        <field name="contactNumber" type="text-medium"/>
+        <field name="email" type="text-medium"/>
+    </entity>
+
+</entities>
+

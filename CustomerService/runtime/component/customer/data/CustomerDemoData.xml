@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="demo">
+    <customer.Customer customerId="01" customerName="raj"/>
+    <customer.Customer customerId="02" customerName="ravi"/>
+</entity-facade-xml>

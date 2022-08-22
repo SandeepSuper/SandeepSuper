@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd">
+    <subscreens default-item="CustomerSubScreen" />
+    <widgets>
+        <!--<label type="h1" text="Customer Service"/>-->
+        <render-mode>
+            <text type="html,vuet" location="component://customer/screen/customer/hello.html"/>
+        </render-mode>
+        <subscreens-active/>
+    </widgets>
+</screen>

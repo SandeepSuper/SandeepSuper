@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eecas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-eca-2.1.xsd">
+
+
+    <eeca id="CustomerEntryUpdateTask" entity="customer.Customer"
+          on-create="false" on-update="true" on-delete="false" get-entire-entity="true">
+        <!--<condition><expression>workEffortId</expression></condition>-->
+        <actions>
+            <log message="----------------------------ecca-----------"/>
+            <service-call name="customer.CustomerServices.create#Customer" in-map="context"/>
+
+        </actions>
+    </eeca>
+
+    <!--<eeca id="WorkEffortUpdateProject" entity="mantle.work.effort.WorkEffort"-->
+          <!--on-create="true" on-update="true" on-delete="true" get-entire-entity="true">-->
+        <!--<condition><expression>rootWorkEffortId != null &amp;&amp; workEffortTypeEnumId == 'WetTask'</expression></condition>-->
+        <!--<actions><service-call name="mantle.work.TaskServices.update#ProjectTimeFromTask" in-map="context"/></actions>-->
+    <!--</eeca>-->
+    <!--<eeca id="WorkEffortTaskDefault" entity="mantle.work.effort.WorkEffort"-->
+          <!--on-create="true" on-update="true" on-delete="false" run-before="true" get-entire-entity="true">-->
+        <!--<condition><expression>workEffortTypeEnumId == 'WetTask'</expression></condition>-->
+        <!--<actions><service-call name="mantle.work.TaskServices.set#TaskDefaults" in-map="context"/></actions>-->
+    <!--</eeca>-->
+</eecas>

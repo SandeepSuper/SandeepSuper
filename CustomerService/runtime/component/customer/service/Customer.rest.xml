@@ -1,0 +1,37 @@
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/rest-api-2.1.xsd"
+        name="customer" displayName="Customer API" version="1.0.0" description="Services for Customer">
+    <resource name="customerDetail" require-authentication="anonymous-view">
+    <method type="get">
+        <service name="customer.CustomerServices.get#CustomerDetails"/>
+    </method>
+    </resource>
+    <resource name="customerList" require-authentication="anonymous-view">
+        <method type="get">
+            <service name="customer.CustomerServices.get#AllCustomerDetails"/>
+        </method>
+    </resource>
+
+    <resource name="moquiSessionToken" require-authentication="anonymous-view">
+        <method type="get"><service name="customer.CustomerServices.get#MoquiSessionToken"/></method>
+    </resource>
+    <resource name="createCustomer" require-authentication="anonymous-view">
+        <method type="post">
+            <service name="customer.CustomerServices.create#Customer"/>
+        </method>
+    </resource>
+    <resource name="deleteCustomer" require-authentication="anonymous-view">
+        <method type="delete">
+            <service name="customer.CustomerServices.delete#Customer"/>
+        </method>
+    </resource>
+    <resource name="updateCustomer" require-authentication="anonymous-view">
+        <method type="put">
+            <service name="customer.CustomerServices.update#Customer"/>
+        </method>
+    </resource>
+    <resource name="storeCustomer" require-authentication="anonymous-view">
+        <method type="put">
+            <service name="customer.CustomerServices.store#Customer"/>
+        </method>
+    </resource>
+</resource>

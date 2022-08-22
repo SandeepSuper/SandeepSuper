@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<secas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-eca-2.1.xsd">
+    <seca id="TutorialCreatePerson11" service="customer.CustomerServices.update#Customer" when="post-service">
+        <!--<condition><expression>customerId &amp;&amp; !customerName</expression></condition>-->
+        <actions>
+            <log message="---------------------hello---------------------------"/>
+            <service-call name="customer.CustomerServices.delete#Customer" in-map="context" />
+        </actions>
+    </seca>
+    <!--<seca id="UserAccountCreatePerson" service="org.moqui.impl.UserServices.create#UserAccount" when="post-service" run-on-error="false">-->
+    <!--<condition><expression>userId &amp;&amp; !partyId</expression></condition>-->
+    <!--<actions><service-call name="mantle.party.PartyServices.create#UserAccountPerson" in-map="context"/></actions>-->
+    <!--</seca>-->
+
+   <!-- <seca id="TutorialCreatePerson121" service="update#customer.Customer" when="post-service">
+        &lt;!&ndash;<condition><expression>customerId &amp;&amp; !customerName</expression></condition>&ndash;&gt;
+        <actions>
+            <log message="&#45;&#45;&#45;&#45;&#45;&#45;entity-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;hello-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"/>
+
+
+        </actions>
+    </seca>-->
+</secas>

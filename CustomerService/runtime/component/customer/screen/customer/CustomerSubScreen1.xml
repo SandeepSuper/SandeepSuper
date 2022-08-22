@@ -1,0 +1,157 @@
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-1.4.xsd"
+        default-menu-title="Task" default-menu-index="1">
+    <parameter name="customerId"/>
+    <transition name="customer.csv">
+        <default-response url=".">
+            <parameter name="renderMode" value="csv"/>
+            <parameter name="pageNoLimit" value="true"/>
+            <parameter name="lastStandalone" value="true"/>
+        </default-response>
+    </transition>
+    <transition name="customer.xml">
+        <default-response url=".">
+            <parameter name="renderMode" value="xml"/>
+            <parameter name="pageNoLimit" value="true"/>
+            <parameter name="lastStandalone" value="true"/>
+        </default-response>
+    </transition>
+    <transition name="customer.pdf">
+        <default-response url-type="plain"
+                          url="${ec.web.getWebappRootUrl(false, null)}/fop/apps/customer">
+            <parameter name="renderMode" value="xsl-fo"/>
+            <parameter name="pageNoLimit" value="true"/>
+
+        </default-response>
+    </transition>
+
+    <transition name="home1">
+
+        <default-response url="../CustomerSubScreen"/>
+    </transition>
+
+
+
+    <actions>
+        <entity-find entity-name="customer.Customer" list="customerList">
+            <search-form-inputs/></entity-find>
+    </actions>
+
+    <widgets>
+
+        <container>
+            <link url="customer.csv" text="CSV"
+                  icon="fa fa-file-o" target-window="_blank" expand-transition-url="false"/>
+            <link url="customer.xml" text="XML"
+                  icon="fa fa-file-excel-o" target-window="_blank" expand-transition-url="false"/>
+            <link url="customer.pdf" text="PDF"
+                  icon="fa fa-file-pdf-o" target-window="_blank"/>
+        </container>
+
+
+        <form-list name="ListCustomers" list="customerList"
+                   header-dialog="false" skip-form="true">
+            <field name="customerId">
+                <header-field show-order-by="true">
+
+                    <!--<drop-down allow-empty="true">
+                        <list-options list="customerList"/>
+                    </drop-down>-->
+
+
+                        <drop-down >
+                            <option key=" " text="" />
+                            <entity-options key="${customerId}">
+                                <entity-find entity-name="customer.Customer" cache="true">
+                                    <!--<econdition field-name="indexName" from="searchIndexName"/><order-by field-name="documentName"/>-->
+                                </entity-find>
+                            </entity-options>
+                        </drop-down>
+
+
+                </header-field>
+                <default-field><display/></default-field>
+            </field>
+
+            <field name="customerName">
+                <!--<header-field show-order-by="true"></header-field>-->
+                <header-field show-order-by="true">
+                    <text-find hide-options="true" size="20"/></header-field>
+                <default-field><display/></default-field>
+            </field>
+
+            <field name="customerAge">
+                <!--<header-field show-order-by="true"></header-field>-->
+                <header-field show-order-by="true">
+                    <text-find hide-options="true" size="20"/></header-field>
+                <default-field><display/></default-field>
+            </field>
+
+            <field name="customerSalary">
+                <!--<header-field show-order-by="true"></header-field>-->
+                <header-field show-order-by="true">
+                    <text-find hide-options="true" size="20"/></header-field>
+                <default-field><display/></default-field>
+            </field>
+
+            <field name="Edit">
+                <header-field title="Find">
+                    <submit icon="fa fa-search"/>
+                </header-field>
+                <default-field>
+                    <container-dialog id="UpdateCustomerDialog"
+                                      button-text="Edit" icon="fa fa-edit">
+                        <form-single name="UpdateCustomer"
+                                     transition="updateCustomer">
+                            <!--<auto-fields-entity entity-name="customer.Customer"-->
+                            <!--field-type="edit"/>-->
+
+                            <field name="customerId" >
+                                <default-field>
+                                    <!--<text-line size="20" disabled="true"/>-->
+                                    <hidden/>
+                                </default-field>
+                            </field>
+
+                            <field name="customerName">
+                                <default-field>
+                                    <text-line size="20"/>
+                                </default-field>
+                            </field>
+
+                            <field name="customerAge">
+                                <default-field>
+                                    <text-line size="20"/>
+                                </default-field>
+                            </field>
+
+                            <field name="customerSalary">
+                                <default-field>
+                                    <text-line size="20"/>
+                                </default-field>
+                            </field>
+
+                            <field name="submitButton"><default-field
+                                    title="Update"><submit/></default-field></field>
+                        </form-single>
+
+                    </container-dialog>
+                </default-field>
+            </field>
+            <field name="">
+                <default-field>
+                    <link url="deleteCustomer" icon="fa fa-trash"
+                          parameter-map="[customerId:customerId]"
+                          text="Delete"
+                          confirmation="Are you sure you want to delete"/>
+                </default-field>
+            </field>
+
+        </form-list>
+        <default-field>
+            <link text="Privious" icon="fa fa-arrow-circle-left" url="home1" btn-type="success"/>
+        </default-field>
+
+
+    </widgets>
+</screen>

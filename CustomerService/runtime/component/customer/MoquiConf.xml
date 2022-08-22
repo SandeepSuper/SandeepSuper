@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<moqui-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/moqui-conf-2.1.xsd">
+    <screen-facade>
+        <screen location="component://webroot/screen/webroot/apps.xml">
+            <subscreens-item name="customer" menu-title="Customer Service" menu-index="110"
+                             location="component://customer/screen/customer.xml"/>
+        </screen>
+    </screen-facade>
+</moqui-conf>

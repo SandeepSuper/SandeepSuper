@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.1.xsd">
+    <service verb="create" noun="Customer" type="inline" authenticate="anonymous-all">
+        <in-parameters>
+            <!--<parameter name="customerId" required="true"/>-->
+            <parameter name="customerName"/>
+            <parameter name="customerAge"/>
+            <parameter name="customerSalary"/>
+        </in-parameters>
+        <actions>
+            <service-call name="create#customer.Customer" in-map="[customerName:customerName , customerAge:customerAge , customerSalary:customerSalary]"/>
+        </actions>
+    </service>
+
+    <service verb="delete" noun="Customer" type="inline" authenticate="anonymous-all">
+        <!--location="component://customer/service/customer/deleteCustomer.groovy">-->
+        <in-parameters>
+            <parameter name="customerId" required="true"/>
+            <!--<parameter name="customerName"/>-->
+            <!--<parameter name="customerAge"/>-->
+            <!--<parameter name="customerSalary"/>-->
+        </in-parameters>
+        <actions>
+            <service-call name="delete#customer.Customer" in-map="[customerId:customerId]"/>
+        </actions>
+    </service>
+
+    <service verb="update" noun="Customer" type="inline" authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="customerId" required="true"/>
+            <parameter name="customerName"/>
+            <parameter name="customerAge"/>
+            <parameter name="customerSalary"/>
+        </in-parameters>
+        <actions>
+            <service-call name="update#customer.Customer" in-map="[customerId:customerId , customerName:customerName , customerAge:customerAge , customerSalary:customerSalary]"/>
+        </actions>
+    </service>
+
+    <service verb="store" noun="Customer" type="inline" authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="customerId" required="true"/>
+            <parameter name="customerName"/>
+            <parameter name="customerAge"/>
+            <parameter name="customerSalary"/>
+        </in-parameters>
+        <actions>
+            <service-call name="store#customer.Customer" in-map="[customerId:customerId ,
+             customerName:customerName , customerAge:customerAge , customerSalary:customerSalary]"/>
+        </actions>
+    </service>
+
+    <service verb="get" noun="CustomerDetails">
+        <in-parameters>
+            <parameter name="customerId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="customer"/>
+        </out-parameters>
+        <actions>
+            <entity-find-one entity-name="customer.Customer" value-field="customer">
+                <field-map field-name="customerId"/>
+            </entity-find-one>
+            <!--<log message ="========customer===============${customer}=========="/>-->
+        </actions>
+    </service>
+
+    <service verb="get" noun="AllCustomerDetails">
+        <out-parameters>
+            <parameter name="customerList"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="customer.Customer" list="customerList">
+            </entity-find>
+        </actions>
+    </service>
+
+    <service verb="get" noun="MoquiSessionToken">
+        <out-parameters>
+            <parameter name="moquiSessionToken"/>
+        </out-parameters>
+        <actions>
+            <set field="moquiSessionToken" from="ec.web.sessionToken" />
+        </actions>
+    </service>
+</services>
