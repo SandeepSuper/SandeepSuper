@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.1.xsd">
+    <entity entity-name="employee" package="Employee">
+        <field name="employeeId" type="id" is-pk="true"/>
+        <field name = "employeeAge" type="text-medium" />
+        <field name="employeeName" type="text-medium"/>
+    </entity>
+</entities>

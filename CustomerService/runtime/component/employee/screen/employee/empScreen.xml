@@ -1,0 +1,33 @@
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd">
+    <transition name="update">
+        <service-call name="update#Employee.employee"/>
+        <default-response url="."/>
+    </transition>
+    <actions>
+        <entity-find-one entity-name="Employee.employee" value-field="fieldValues"/>
+    </actions>
+    <widgets>
+        <form-single name="UpdateMasterEntityValue" transition="update">
+            <field name="employeeId">
+                <default-field>
+                    <display/>
+                </default-field>
+            </field>
+            <field name="employeeAge">
+                <default-field>
+                    <text-line size="30"/>
+                </default-field>
+            </field>
+            <field name="employeeName">
+                <default-field>
+                    <text-line size="30"/>
+                </default-field>
+            </field>
+            <field name="submitButton">
+                <default-field title="Update">
+                    <submit/>
+                </default-field>
+            </field>
+        </form-single>
+    </widgets>
+</screen>

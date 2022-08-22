@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd">
+    <!--This action finds the data list-->
+
+    <transition name="update">
+        <service-call name="update#Employee.employee"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteEmployee">
+        <service-call name="delete#Employee.employee"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createEmployee">
+        <service-call name="store#Employee.employee"/>
+        <default-response url="."/>
+    </transition>
+
+
+    <actions>
+        <!--below the find entity defines the package name as sampleScreen for default package and entity
+        name as Sample-->
+        <entity-find entity-name="Employee.employee" list="employeeList">
+            <search-form-inputs/>
+        </entity-find>
+    </actions>
+
+    <widgets>
+
+        <!--this list is fetching the data to current html page-->
+        <form-list name="ListEmployees" list="employeeList" header-dialog="true" skip-form="false">
+            <field name="employeeId">
+                <header-field show-order-by="true">
+                    <text-find hide-options="false"/>
+                </header-field>
+                <default-field>
+                    <display/>
+                </default-field>
+            </field>
+
+            <field name="employeeAge">
+                <!--disable the orderBy for disable autoFilter-->
+                <header-field show-order-by="false">
+                    <text-find hide-options="false"/>
+                </header-field>
+                <default-field>
+                    <display/>
+                </default-field>
+            </field>
+
+            <field name="employeeName">
+                <header-field show-order-by="false">
+                    <text-find hide-options="false"/>
+                </header-field>
+                <default-field>
+                    <display/>
+                </default-field>
+            </field>
+
+        </form-list>
+
+        <!-- This container opens the createEmployee in a new dialog pane-->
+
+        <!--this container show the dialog box to delete-->
+        <container-dialog id="CreateEmployeeDialog" button-text="Create Employee">
+            <form-single name="CreateEmployee" transition="createEmployee">
+                <auto-fields-entity entity-name="Employee.employee" field-type="edit"/>
+                <field name="submitButton">
+                    <default-field title="Store">
+                        <submit/>
+                    </default-field>
+                </field>
+            </form-single>
+        </container-dialog>
+
+
+
+
+        <!--this container show the dialog box to delete-->
+        <container-dialog id="DeleteEmployeeDialog" button-text="Delete Employee">
+            <form-single name="DeleteEmployee" transition="deleteEmployee">
+                <auto-fields-entity entity-name="Employee.employee" field-type="edit"/>
+                <field name="submitButton">
+                    <default-field title="Delete">
+                        <submit/>
+                    </default-field>
+                </field>
+            </form-single>
+        </container-dialog>
+
+
+        <!--container to update the data-->
+        <container-dialog id="UpdateEmployeeDialog" button-text="Update Employee">
+            <form-single name="UpdateMasterEntityValue" transition="update">
+                <field name="employeeId">
+                    <default-field>
+                        <text-line size="30"/>
+                    </default-field>
+                </field>
+                <field name="employeeAge">
+                    <default-field>
+                        <text-line size="30"/>
+                    </default-field>
+                </field>
+                <field name="employeeName">
+                    <default-field>
+                        <text-line size="30"/>
+                    </default-field>
+                </field>
+                <field name="submitButton">
+                    <default-field title="Update">
+                        <submit/>
+                    </default-field>
+                </field>
+            </form-single>
+        </container-dialog>
+
+
+    </widgets>
+
+</screen>
+
+
+
+

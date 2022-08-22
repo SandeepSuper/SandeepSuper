@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<secas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-eca-2.1.xsd">
+    <seca id="TutorialCreatePerson" service="tutorial.TutorialServices.create#Tutorial" when="post-service" run-on-error="false">
+        <condition><expression>userId &amp;&amp; !partyId</expression></condition>
+        <actions><service-call name="tutorial.TutorialServices.update#Tutorial" in-map="context"/></actions>
+    </seca>
+    <!--<seca id="UserAccountCreatePerson" service="org.moqui.impl.UserServices.create#UserAccount" when="post-service" run-on-error="false">-->
+        <!--<condition><expression>userId &amp;&amp; !partyId</expression></condition>-->
+        <!--<actions><service-call name="mantle.party.PartyServices.create#UserAccountPerson" in-map="context"/></actions>-->
+    <!--</seca>-->
+</secas>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="demo">
+    <Employee.employee employeeId="25643" employeeAge="31."  employeeName ="ramesh"/>
+    <Employee.employee employeeId="3123" employeeAge="25 ."  employeeName ="ram"/>
+    <Employee.employee employeeId="23" employeeAge="27 ."  employeeName ="rahim"/>
+    <!--added test record -->
+    <!--<tutorial.Tutorial tutorialId="newRec" description="newRec description."/>
+ -->
+</entity-facade-xml>

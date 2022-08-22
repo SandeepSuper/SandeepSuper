@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="seed-initial">
+    <moqui.security.ArtifactGroup artifactGroupId="Employee_APP"
+                                  description="Employee Management"/>
+    <moqui.security.ArtifactGroupMember artifactGroupId="Employee_APP"
+                                        artifactName="component://employee/screen/employee.xml"
+                                        artifactTypeEnumId="AT_XML_SCREEN" inheritAuthz="Y"/>
+    <moqui.security.ArtifactAuthz artifactAuthzId="Employee_ALL"
+                                  userGroupId="ALL_USERS" artifactGroupId="Employee_APP"
+                                  authzTypeEnumId="AUTHZT_ALWAYS" authzActionEnumId="AUTHZA_ALL"/>
+</entity-facade-xml>
+
